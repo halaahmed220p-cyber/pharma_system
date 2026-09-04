@@ -1,0 +1,273 @@
+.verify-container {
+    background: #f8fafc;
+    min-height: 100vh;
+    padding: 30px 20px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+}
+
+.verify-header-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.tab-btn:hover {
+    background: #1d4ed8;
+}
+
+.verify-card-box {
+    background: white;
+    max-width: 700px;
+    margin: auto;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.verify-title-section {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.verify-title-section h2 {
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.verify-title-section p {
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* تنسيق قسم الـ QR */
+.qr-section-content h3 {
+    text-align: center;
+    color: #1e293b;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.sub-text {
+    text-align: center;
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.camera-frame {
+    background: #0f172a;
+    border-radius: 12px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.cam-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.activate-cam-btn {
+    background: #1e40af;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.manual-qr-input span {
+    display: block;
+    font-size: 13px;
+    color: #334155;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.input-with-btn {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-with-btn input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+}
+
+.check-now-btn {
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.upload-qr-file label {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* تنسيق قسم البحث بالاسم */
+.search-input-wrapper input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.search-submit-btn {
+    width: 100%;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.recent-names-grid .grid-label {
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.names-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.names-tags span {
+    background: #f1f5f9;
+    color: #334155;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #e2e8f0;
+}
+
+.names-tags span:hover {
+    background: #e2e8f0;
+}
+
+/* بطاقة نجاح التوثيق */
+.success-verification-result {
+    border: 2px solid #22c55e;
+    background: #f0fdf4;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.success-badge-header {
+    color: #15803d;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-verification-result h3 {
+    font-size: 14px;
+    color: #1e293b;
+    margin-bottom: 15px;
+}
+
+.details-grid-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #bbf7d0;
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row .label {
+    color: #64748b;
+}
+
+.detail-row .value {
+    color: #1e293b;
+}
+
+.detail-row .value.bold {
+    font-weight: bold;
+}
+
+.detail-row .value.code {
+    font-family: monospace;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.badge-tag-pill {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+}
+
+.print-badge-from-verify-btn {
+    width: 100%;
+    background: #1e40af;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.reset-verify-btn {
+    width: 100%;
+    background: #e2e8f0;
+    color: #334155;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}

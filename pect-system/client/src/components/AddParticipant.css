@@ -1,0 +1,224 @@
+.add-container {
+    background: #f8fafc;
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+}
+
+.back-btn {
+    background: #e2e8f0;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-card {
+    background: white;
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.form-card h2 {
+    text-align: center;
+    color: #1e293b;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #334155;
+}
+
+.input-group select, .input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+}
+
+.sub-section {
+    background: #f1f5f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-right: 4px solid #3b82f6;
+}
+
+.sub-section h4 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    color: #1e293b;
+}
+
+.submit-btn {
+    width: 100%;
+    background: #1e40af;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background: #1d4ed8;
+}
+
+/* تنسيق معاينة البطاقة المطابقة للصورة الأخيرة */
+.badge-preview-modal {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.badge-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    overflow: hidden;
+    border: 1px solid #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.badge-header-top {
+    background: #1e3a8a;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.badge-sub {
+    background: #1e3a8a;
+    color: #93c5fd;
+    font-size: 9px;
+    padding-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.badge-tag {
+    background: #3b82f6;
+    color: white;
+    font-size: 10px;
+    padding: 4px;
+}
+
+.badge-body {
+    padding: 20px;
+}
+
+.participant-role-badge {
+    background: #f1f5f9;
+    color: #334155;
+    padding: 4px 15px;
+    border-radius: 15px;
+    font-size: 11px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.badge-body h3 {
+    margin: 5px 0;
+    font-size: 20px;
+    color: #0f172a;
+}
+
+.badge-body p {
+    color: #64748b;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.qr-box img {
+    width: 110px;
+    height: 110px;
+}
+
+.qr-text {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 5px;
+    font-family: monospace;
+}
+
+.badge-footer {
+    background: #1e3a8a;
+    color: #93c5fd;
+    font-size: 10px;
+    padding: 6px;
+}
+
+.badge-actions button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.download-pdf-btn {
+    background: #1d4ed8;
+    color: white;
+}
+
+.close-preview-btn {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+/* تخصيص الطباعة لإظهار الكارت وحده فقط بدون أزرار أو عناصر أخرى */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    
+    .badge-card, .badge-card * {
+        visibility: visible;
+    }
+    
+    .badge-card {
+        position: absolute;
+        top: 0;
+        right: 50%;
+        transform: translateX(50%);
+        width: 100%;
+        max-width: 380px;
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+    }
+
+    .badge-actions, .back-btn {
+        display: none !important;
+    }
+}
