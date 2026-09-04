@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './Login.css'; // سنقوم بإنشاء هذا الملف للتنسيقات
-import logo from '../assets/logo.png'; // مسار الشعار
+import './Login.css';
+import logo from '../assets/logo.png';
 
 export default function Login({ onLogin }) {
     const [username, setUsername] = useState('');
@@ -12,26 +12,24 @@ export default function Login({ onLogin }) {
         e.preventDefault();
         try {
             const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
-const res = await axios.post(`${API_URL}/api/login`, { username, password });
+            const res = await axios.post(`${API_URL}/api/login`, { username, password, role });
             if (res.data.success) {
                 onLogin(res.data.user);
             }
         } catch (err) {
-            alert('خطأ في تسجيل الدخول، تأكد من البيانات');
+            alert('خطأ في تسجيل الدخول، تأكد من البيانات أو الدور المحدد');
         }
     };
 
     return (
         <div className="login-page">
             <div className="login-card">
-                {/* الهيدر العلوي الأزرق مع الشعار والعناوين */}
                 <div className="login-header">
                     <img src={logo} alt="PHARM Logo" className="logo-img" />
                     <h2>نظام إدارة PECT</h2>
                     <p>المؤتمر والمعرض الصيدلاني (PHARM)</p>
                 </div>
 
-                {/* نموذج تسجيل الدخول */}
                 <form onSubmit={handleLogin} className="login-form">
                     <h3>تسجيل الدخول إلى النظام</h3>
                     
@@ -65,15 +63,35 @@ const res = await axios.post(`${API_URL}/api/login`, { username, password });
 
                     <div className="input-group">
                         <label>الصلاحية / الدور</label>
-                        <div className="radio-group">
-                            <label className="radio-label">
+                        <div className="radio-group" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '5px' }}>
+                            <label className="radio-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                                 <input 
                                     type="radio" 
                                     name="role" 
                                     checked={role === 'Master Admin'} 
                                     onChange={() => setRole('Master Admin')} 
                                 />
-                                المسؤول (Admin)
+                                المسؤول الرئيسي (Master Admin)
+                            </label>
+                            
+                            <label className="radio-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                                <input 
+                                    type="radio" 
+                                    name="role" 
+                                    checked={role === 'Verifier'} 
+                                    onChange={() => setRole('Verifier')} 
+                                />
+                                موثق البيانات (Verifier)
+                            </label>
+
+                            <label className="radio-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                                <input 
+                                    type="radio" 
+                                    name="role" 
+                                    checked={role === 'Data Entry'} 
+                                    onChange={() => setRole('Data Entry')} 
+                                />
+                                مدخل البيانات (Data Entry)
                             </label>
                         </div>
                     </div>
@@ -82,9 +100,6 @@ const res = await axios.post(`${API_URL}/api/login`, { username, password });
                         تسجيل الدخول <span>←</span>
                     </button>
                 </form>
-
-                {/* بيانات الدخول الجاهزة */}
-               
             </div>
         </div>
     );
