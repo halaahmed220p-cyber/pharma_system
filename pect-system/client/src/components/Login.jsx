@@ -83,14 +83,7 @@ export default function Login({ onLogin }) {
                 </form>
 
                 {/* بيانات الدخول الجاهزة */}
-                <div className="credentials-box">
-                    <small>✨ بيانات الدخول الجاهزة (Strict Credentials):</small>
-                    <div className="cred-buttons">
-                        <button type="button" onClick={() => {setUsername('admin'); setPassword('admin123');}}>admin (Master)</button>
-                        <button type="button" onClick={() => {setUsername('user1'); setPassword('user123');}}>user1 (إضافة البيانات)</button>
-                        <button type="button" onClick={() => {setUsername('user2'); setPassword('user2123');}}>user2 (توثيق البيانات)</button>
-                    </div>
-                </div>
+               
             </div>
         </div>
     );
