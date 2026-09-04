@@ -6,18 +6,19 @@ import logo from '../assets/logo.png';
 export default function Login({ onLogin }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('Master Admin');
 
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
-            const res = await axios.post(`${API_URL}/api/login`, { username, password, role });
+            const res = await axios.post(`${API_URL}/api/login`, { username, password });
+            
             if (res.data.success) {
+                // تمرير بيانات المستخدم (التي تحتوي على الـ role من قاعدة البيانات)
                 onLogin(res.data.user);
             }
         } catch (err) {
-            alert('خطأ في تسجيل الدخول، تأكد من البيانات أو الدور المحدد');
+            alert('خطأ في تسجيل الدخول، تأكد من البيانات');
         }
     };
 
@@ -58,41 +59,6 @@ export default function Login({ onLogin }) {
                                 required 
                             />
                             <i className="icon-lock">🔒</i>
-                        </div>
-                    </div>
-
-                    <div className="input-group">
-                        <label>الصلاحية / الدور</label>
-                        <div className="radio-group" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '5px' }}>
-                            <label className="radio-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                                <input 
-                                    type="radio" 
-                                    name="role" 
-                                    checked={role === 'Master Admin'} 
-                                    onChange={() => setRole('Master Admin')} 
-                                />
-                                المسؤول الرئيسي (Master Admin)
-                            </label>
-                            
-                            <label className="radio-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                                <input 
-                                    type="radio" 
-                                    name="role" 
-                                    checked={role === 'Verifier'} 
-                                    onChange={() => setRole('Verifier')} 
-                                />
-                                موثق البيانات (Verifier)
-                            </label>
-
-                            <label className="radio-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                                <input 
-                                    type="radio" 
-                                    name="role" 
-                                    checked={role === 'Data Entry'} 
-                                    onChange={() => setRole('Data Entry')} 
-                                />
-                                مدخل البيانات (Data Entry)
-                            </label>
                         </div>
                     </div>
 

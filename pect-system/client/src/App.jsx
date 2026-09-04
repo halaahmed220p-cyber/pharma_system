@@ -3,20 +3,32 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import VerifyPage from './components/VerifyPage';
 import AddParticipant from './components/AddParticipant';
-import ManageNames from './components/ManageNames'; // استيراد صفحة مراجعة الأسماء
+import ManageNames from './components/ManageNames';
 
 export default function App() {
     const [user, setUser] = useState(null);
     const [activeTab, setActiveTab] = useState('dashboard');
 
     if (!user) {
-        return <Login onLogin={(userData) => { setUser(userData); setActiveTab('dashboard'); }} />;
+        return (
+            <Login 
+                onLogin={(userData) => { 
+                    setUser(userData); 
+                    if (userData.role === 'Verifier') {
+                        setActiveTab('verify');
+                    } else if (userData.role === 'Data Entry') {
+                        setActiveTab('add');
+                    } else {
+                        setActiveTab('dashboard'); 
+                    }
+                }} 
+            />
+        );
     }
 
     if (activeTab === 'verify') {
         return (
             <div>
-                {/* يمكنك إضافة زر عودة للوحة التحكم هنا إذا أردت */}
                 <VerifyPage />
             </div>
         );
