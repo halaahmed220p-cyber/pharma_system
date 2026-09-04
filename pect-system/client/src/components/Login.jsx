@@ -11,7 +11,8 @@ export default function Login({ onLogin }) {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/login', { username, password });
+            const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
+const res = await axios.post(`${API_URL}/api/login`, { username, password });
             if (res.data.success) {
                 onLogin(res.data.user);
             }
