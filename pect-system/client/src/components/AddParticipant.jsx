@@ -21,7 +21,7 @@ export default function AddParticipant({ onBack }) {
   const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const API_URL = import.meta.env.VITE_API_URL || 'https://رابط-الباك-إيند-الصحيح-على-ريندر.onrender.com';
+            const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
             const res = await axios.post(`${API_URL}/api/participants`, formData);
             setSavedCard(res.data); // البيانات المرجعة مع الـ QR
         } catch (err) {
