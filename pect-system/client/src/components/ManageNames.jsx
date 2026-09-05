@@ -8,10 +8,11 @@ export default function ManageNames({ onBack }) {
     const [errorMsg, setErrorMsg] = useState('');
     const [editingItem, setEditingItem] = useState(null);
 
-    const fetchRecords = async () => {
+ const fetchRecords = async () => {
         setLoading(true);
+        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
         try {
-const response = await axios.get(`${API_URL}/api/participants`);
+            const response = await axios.get(`${API_URL}/api/participants`);
             if (Array.isArray(response.data)) {
                 setRecords(response.data);
             } else if (response.data && Array.isArray(response.data.data)) {
