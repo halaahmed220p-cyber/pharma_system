@@ -7,9 +7,9 @@ export default function Dashboard({ user, onLogout, setActiveTab }) {
     const [stats, setStats] = useState({ total: 19, participants: 14, organizers: 6 });
     const [searchQuery, setSearchQuery] = useState('');
 
-    useEffect(() => {
+useEffect(() => {
         const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
-const res = await axios.get(`${API_URL}/api/participants`);
+        axios.get(`${API_URL}/api/participants`)
             .then(res => {
                 if(res.data && res.data.length > 0) {
                     setStats({

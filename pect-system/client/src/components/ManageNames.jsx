@@ -11,7 +11,7 @@ export default function ManageNames({ onBack }) {
     const fetchRecords = async () => {
         setLoading(true);
         try {
-const response = await axios.get('https://pharma-system.onrender.com/api/participants');
+const response = await axios.get(`${API_URL}/api/participants`);
             if (Array.isArray(response.data)) {
                 setRecords(response.data);
             } else if (response.data && Array.isArray(response.data.data)) {
@@ -35,7 +35,7 @@ const response = await axios.get('https://pharma-system.onrender.com/api/partici
         const recordId = item.id || item._id;
         if (window.confirm('هل أنت متأكد من حذف هذا السجل نهائياً؟')) {
             try {
-                await axios.delete(`https://pharma-system.onrender.com/api/participants/${recordId}`);
+                const response = await axios.get(`${API_URL}/api/participants`);
                 setRecords(records.filter(r => (r.id || r._id) !== recordId));
             } catch (err) {
                 console.error("خطأ الحذف:", err);
@@ -44,20 +44,21 @@ const response = await axios.get('https://pharma-system.onrender.com/api/partici
         }
     };
 
-    const handleUpdateSubmit = async (e) => {
+const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         const recordId = editingItem.id || editingItem._id;
+        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
         
         try {
             console.log("إرسال التعديل للسجل رقم:", recordId, editingItem);
             
-          await axios.put(`https://pharma-system.onrender.com/api/participants/${recordId}`, {
-    full_name: editingItem.full_name,
-    add_type: editingItem.add_type,
-    sub_category: editingItem.sub_category,
-    role_title: editingItem.role_title,
-    qr_code: editingItem.qr_code
-});
+            await axios.put(`${API_URL}/api/participants/${recordId}`, {
+                full_name: editingItem.full_name,
+                add_type: editingItem.add_type,
+                sub_category: editingItem.sub_category,
+                role_title: editingItem.role_title,
+                qr_code: editingItem.qr_code
+            });
 
             alert('تم تعديل البيانات بنجاح');
             setEditingItem(null);
@@ -67,6 +68,8 @@ const response = await axios.get('https://pharma-system.onrender.com/api/partici
             alert(`فشل حفظ التعديلات: ${err.response?.data?.message || err.message}`);
         }
     };
+
+        
 
     return (
         <div className="manage-container">

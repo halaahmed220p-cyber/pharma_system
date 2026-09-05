@@ -12,9 +12,11 @@ export default function VerifyData() {
     const [scannerActive, setScannerActive] = useState(false);
 
     // دالة التحقق عبر الباك اند (السيرفر)
+ // دالة التحقق عبر الباك اند (السيرفر)
     const verifyCodeOnServer = async (codeToVerify) => {
+        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
         try {
-            const res = await axios.post('https://pharma-system.onrender.com/api/verify', { qr_code: codeToVerify });
+            const res = await axios.post(`${API_URL}/api/verify`, { qr_code: codeToVerify });
             if (res.data.success) {
                 setVerifiedData(res.data.data);
                 setErrorMsg('');
