@@ -18,16 +18,19 @@ export default function AddParticipant({ onBack }) {
         'منظم الحدث', 'مساعدة المنظم'
     ];
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
-            const res = await axios.post(`${API_URL}/api/participants`, formData);
+            // استبدلي الرابط أدناه برابط الـ Backend الفعلي الخاص بك على Render
+            const res = await axios.post('https://pharma-system.onrender.com/api/participants', formData);
             setSavedCard(res.data); // البيانات المرجعة مع الـ QR
         } catch (err) {
-            alert('حدث خطأ أثناء الحفظ');
+            console.error(err);
+            alert('حدث خطأ أثناء الحفظ، تأكد من الاتصال بالخادم');
         }
     };
+
+ 
 
     return (
         <div className="add-container">
