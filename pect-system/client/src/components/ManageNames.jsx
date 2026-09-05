@@ -8,9 +8,11 @@ export default function ManageNames({ onBack }) {
     const [errorMsg, setErrorMsg] = useState('');
     const [editingItem, setEditingItem] = useState(null);
 
- const fetchRecords = async () => {
+    // تعريف الرابط هنا يجعله متاحاً لكل الدوال في هذا الملف
+    const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
+
+    const fetchRecords = async () => {
         setLoading(true);
-        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
         try {
             const response = await axios.get(`${API_URL}/api/participants`);
             if (Array.isArray(response.data)) {
@@ -34,8 +36,6 @@ export default function ManageNames({ onBack }) {
 
     const handleDelete = async (item) => {
         const recordId = item.id || item._id;
-        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
-        
         if (window.confirm('هل أنت متأكد من حذف هذا السجل نهائياً؟')) {
             try {
                 await axios.delete(`${API_URL}/api/participants/${recordId}`);
@@ -47,10 +47,9 @@ export default function ManageNames({ onBack }) {
         }
     };
 
-const handleUpdateSubmit = async (e) => {
+    const handleUpdateSubmit = async (e) => {
         e.preventDefault();
         const recordId = editingItem.id || editingItem._id;
-        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
         
         try {
             console.log("إرسال التعديل للسجل رقم:", recordId, editingItem);
@@ -71,8 +70,6 @@ const handleUpdateSubmit = async (e) => {
             alert(`فشل حفظ التعديلات: ${err.response?.data?.message || err.message}`);
         }
     };
-
-        
 
     return (
         <div className="manage-container">
