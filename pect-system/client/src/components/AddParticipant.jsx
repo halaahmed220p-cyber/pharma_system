@@ -21,7 +21,7 @@ export default function AddParticipant({ onBack }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/participants', formData);
+             const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
             setSavedCard(res.data); // البيانات المرجعة مع الـ QR
         } catch (err) {
             alert('حدث خطأ أثناء الحفظ');
