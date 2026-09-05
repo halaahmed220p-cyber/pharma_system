@@ -26,6 +26,17 @@ export default function App() {
         );
     }
 
+    // دالة مخصصة للرجوع تتناسب مع صلاحيات المستخدم الحالي
+    const handleBack = () => {
+        if (user.role === 'Verifier') {
+            setActiveTab('verify');
+        } else if (user.role === 'Data Entry') {
+            setActiveTab('add');
+        } else {
+            setActiveTab('dashboard');
+        }
+    };
+
     if (activeTab === 'verify') {
         return (
             <div>
@@ -36,14 +47,20 @@ export default function App() {
 
     if (activeTab === 'add') {
         return (
-            <AddParticipant onBack={() => setActiveTab('dashboard')} />
+            <AddParticipant onBack={handleBack} />
         );
     }
 
     if (activeTab === 'table') {
         return (
-            <ManageNames onBack={() => setActiveTab('dashboard')} />
+            <ManageNames onBack={handleBack} />
         );
+    }
+
+    // لوحة التحكم الكاملة تظهر فقط للـ Master Admin
+    if (user.role !== 'Master Admin') {
+        if (user.role === 'Verifier') return <VerifyPage />;
+        if (user.role === 'Data Entry') return <AddParticipant onBack={handleBack} />;
     }
 
     return (
