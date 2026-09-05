@@ -18,10 +18,11 @@ export default function AddParticipant({ onBack }) {
         'منظم الحدث', 'مساعدة المنظم'
     ];
 
-    const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://pharma-system.onrender.com/api/participants', formData);
+            const API_URL = import.meta.env.VITE_API_URL || 'https://رابط-الباك-إيند-الصحيح-على-ريندر.onrender.com';
+            const res = await axios.post(`${API_URL}/api/participants`, formData);
             setSavedCard(res.data); // البيانات المرجعة مع الـ QR
         } catch (err) {
             alert('حدث خطأ أثناء الحفظ');
