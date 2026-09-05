@@ -34,9 +34,11 @@ export default function ManageNames({ onBack }) {
 
     const handleDelete = async (item) => {
         const recordId = item.id || item._id;
+        const API_URL = import.meta.env.VITE_API_URL || 'https://pharma-system.onrender.com';
+        
         if (window.confirm('هل أنت متأكد من حذف هذا السجل نهائياً؟')) {
             try {
-                const response = await axios.get(`${API_URL}/api/participants`);
+                await axios.delete(`${API_URL}/api/participants/${recordId}`);
                 setRecords(records.filter(r => (r.id || r._id) !== recordId));
             } catch (err) {
                 console.error("خطأ الحذف:", err);
