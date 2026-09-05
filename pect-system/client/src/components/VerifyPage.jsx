@@ -14,7 +14,7 @@ export default function VerifyData() {
     // دالة التحقق عبر الباك اند (السيرفر)
     const verifyCodeOnServer = async (codeToVerify) => {
         try {
-            const res = await axios.post('http://localhost:5000/api/verify', { qr_code: codeToVerify });
+            const res = await axios.post('https://pharma-system.onrender.com/api/verify', { qr_code: codeToVerify });
             if (res.data.success) {
                 setVerifiedData(res.data.data);
                 setErrorMsg('');
