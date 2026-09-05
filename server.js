@@ -85,13 +85,14 @@ app.put('/api/participants/:id', async (req, res) => {
 
 
 // 4. التحقق وتوثيق الحضور
+// 4. التحقق وتوثيق الحضور
 app.post('/api/verify', async (req, res) => {
     const { qr_code } = req.body;
     try {
         const query = `
             UPDATE participants 
             SET attendance_count = COALESCE(attendance_count, 0) + 1 
-            WHERE qr_code = $1 OR uuid = $1 
+            WHERE qr_code = $1 
             RETURNING *;
         `;
         const result = await pool.query(query, [qr_code]);
